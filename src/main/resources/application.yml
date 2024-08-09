@@ -11,16 +11,11 @@ spring:
     hibernate:
       ddl-auto: update
 
-
-  batch:
-    initialize-schema: ALWAYS
-
-# Disable job run at start up
   batch:
     job:
       enabled: false
+    jdbc:
+      initialize-schema: ALWAYS
 
 server:
   port: 9091
-
-

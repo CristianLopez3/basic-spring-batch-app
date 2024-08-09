@@ -1,48 +1,42 @@
 package com.cristian.batch.entity;
 
-
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
+import java.util.Date;
 
 @Entity
 @Table(name = "COVID_DATA")
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class CovidData {
-    
+
+    @Column(name = "X")
+    private String x; // Renombrado de X a x
+
+    @Column(name = "Y")
+    private String y; // Renombrado de Y a y
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "object_id")
     private Long id;
 
-    @Column(name = "X")
-    private String X;
-
-    @Column(name = "Y")
-    private String Y;
-
     @Column(name = "date")
-    private String date;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
 
-    @Column(name = "sum_number_of_confirmed_covid_19")
-    private String sumNumberOfConfirmedCovid;
+    @Column(name = "SUM_number_of_confirmed_covid_1")
+    private Integer sumNumberOfConfirmedCovid;
 
-    @Column(name = "sum_no_new_admissions_covid19_pos")
-    private String sumNoNewAdmissionsCovid;
+    @Column(name = "SUM_no_new_admissions_covid19_p")
+    private Integer sumNoNewAdmissionsCovid;
 
-    @Column(name = "sum_no_discharges_covid19_posit")
-    private String sumNoDischargesCovid;
+    @Column(name = "SUM_no_discharges_covid19_posit")
+    private Integer sumNoDischargesCovid;
 
-    @Column(name = "sum_number_of_new_covid_19_cases_co")
-    private String sumNumberOfNewCovidCases;
-
-    // X,Y,
-    // OBJECTID,
-    // Date,
-    // SUM_number_of_confirmed_covid_1,
-    // SUM_no_new_admissions_covid19_p,
-    // SUM_no_discharges_covid19_posit,
-    // SUM_number_of_new_covid_19_cases_co
-
-
+    @Column(name = "SUM_number_of_new_covid_19_cases_co")
+    private Integer sumNumberOfNewCovidCases;
 }
