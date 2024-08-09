@@ -56,9 +56,13 @@ public class SpringBatchConfig {
 
         lineTokenizer.setDelimiter(",");
         lineTokenizer.setStrict(false);
-        lineTokenizer.setNames("X", "Y", "OBJECTID", "Date", "SUM_number_of_confirmed_covid_1",
-                "SUM_no_new_admissions_covid19_p", "SUM_no_discharges_covid19_posit",
-                "SUM_number_of_new_covid_19_cases_co");
+        lineTokenizer.setNames(
+                "objectId",
+                "date",
+                "sumNumberOfConfirmedCovid",
+                "sumNoNewAdmissionsCovid",
+                "sumNoDischargesCovid",
+                "sumNumberOfNewCovidCases");
 
         var fieldSetMapper = new BeanWrapperFieldSetMapper<CovidData>();
         fieldSetMapper.setTargetType(CovidData.class);
