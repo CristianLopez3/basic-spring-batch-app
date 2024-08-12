@@ -100,9 +100,7 @@ public class SpringBatchConfig {
                 .build();
     }
 
-    
-
-    @Bean
+    @Bean(name = "sampleJob")
     public Job sampleJob(JobRepository jobRepository, Step step) {
         return new JobBuilder("Parsing csv to database", jobRepository)
                 .start(step)
