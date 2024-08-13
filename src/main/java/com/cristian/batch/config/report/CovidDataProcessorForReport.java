@@ -8,7 +8,7 @@ import org.springframework.batch.item.ItemProcessor;
 public class CovidDataProcessorForReport implements ItemProcessor<CovidData, CovidReport> {
 
     @Override
-    public CovidReport process(CovidData covidData) throws Exception {
+    public CovidReport process(CovidData covidData){
         CovidReport report = new CovidReport();
         report.setDate(covidData.getDate());
         report.setConfirmedCases(covidData.getSumNumberOfConfirmedCovid());
