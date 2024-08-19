@@ -3,6 +3,7 @@ package com.cristian.batch.config.report;
 import com.cristian.batch.entity.CovidData;
 import com.cristian.batch.entity.CovidReport;
 
+import com.cristian.batch.mapper.DataMapper;
 import com.cristian.batch.repository.CovidDataRepository;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -20,8 +21,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class ReportJob {
 
     @Bean
-    public CovidDataProcessorForReport covidDataProcessorForReport() {
-        return new CovidDataProcessorForReport();
+    public CovidDataProcessorForReport covidDataProcessorForReport(final DataMapper dataMapper) {
+        return new CovidDataProcessorForReport(dataMapper);
     }
 
     @Bean
@@ -40,11 +41,12 @@ public class ReportJob {
     public Step generateReportStep(
             JobRepository jobRepository,
             CovidDataRepository covidDataRepository,
-            PlatformTransactionManager transactionManager) {
+            PlatformTransactionManager transactionManager,
+            final DataMapper dataMapper) {
         return new StepBuilder("step-1", jobRepository)
                 .<CovidData, CovidReport>chunk(100, transactionManager)
                 .reader(covidDataItemReader(covidDataRepository))
-                .processor(covidDataProcessorForReport())
+                .processor(covidDataProcessorForReport(dataMapper))
                 .writer(pdfReportWriter())
                 .build();
     }

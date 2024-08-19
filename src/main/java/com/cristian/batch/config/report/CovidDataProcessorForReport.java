@@ -2,10 +2,17 @@ package com.cristian.batch.config.report;
 
 import com.cristian.batch.entity.CovidData;
 import com.cristian.batch.entity.CovidReport;
+import com.cristian.batch.mapper.DataMapper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.stereotype.Component;
 
 
+@Component
+@RequiredArgsConstructor
 public class CovidDataProcessorForReport implements ItemProcessor<CovidData, CovidReport> {
+
+    private final DataMapper dataMapper;
 
     @Override
     public CovidReport process(CovidData covidData){
@@ -16,6 +23,6 @@ public class CovidDataProcessorForReport implements ItemProcessor<CovidData, Cov
         report.setDischarges(covidData.getSumNoDischargesCovid());
         report.setNewCases(covidData.getSumNumberOfNewCovidCases());
 
-        return report;
+        return dataMapper.toCovidReport(covidData);
     }
 }
