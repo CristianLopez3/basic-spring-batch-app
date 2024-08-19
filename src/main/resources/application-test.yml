@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;INIT=RUNSCRIPT FROM 'classpath:org/springframework/batch/core/schema-h2.sql'
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+  main:
+    allow-circular-references: true
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  sql:
+    init:
+      platform: h2
+      continue-on-error: true
+
+file:
+  input: "src/test/resources/coviddata.csv"
+
+  batch:
+    job:
+      enabled: false
+    jdbc:
+      initialize-schema: ALWAYS
+
+
+

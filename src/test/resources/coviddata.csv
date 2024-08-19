@@ -1,0 +1,5 @@
+﻿objectId,date,sumNumberOfConfirmedCovid,sumNoNewAdmissionsCovid,sumNoDischargesCovid,sumNumberOfNewCovidCases
+68,2020/05/13 00:00:00+00,486,14,36,16
+69,2020/05/14 00:00:00+00,459,9,36,7
+70,2020/05/15 00:00:00+00,419,8,36,8
+71,2020/05/16 00:00:00+00,386,9,35,31

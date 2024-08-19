@@ -11,7 +11,8 @@ public class JobFactory {
     private final Job sampleJob;
     private final Job generateReportJob;
 
-    public JobFactory(@Qualifier("sampleJob") Job sampleJob, @Qualifier("generateReportJob") Job generateReportJob) {
+    public JobFactory(@Qualifier("sampleJob") Job sampleJob,
+                      @Qualifier("generateReportJob") Job generateReportJob) {
         this.sampleJob = sampleJob;
         this.generateReportJob = generateReportJob;
     }

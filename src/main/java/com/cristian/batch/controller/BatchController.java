@@ -10,21 +10,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
 @RestController
 @RequestMapping("/batch")
 public class BatchController {
 
     private final JobLauncher jobLauncher;
-    private final JobFactory jobFactory ;
+    private final JobFactory jobFactory;
 
-    public BatchController(JobLauncher jobLauncher, JobFactory jobFactory ) {
+    public BatchController(JobLauncher jobLauncher, JobFactory jobFactory) {
         this.jobLauncher = jobLauncher;
         this.jobFactory = jobFactory;
     }
 
     @GetMapping("/runReportJob")
-    public String runReportJob(@RequestParam("job")String jobName) throws Exception {
+    public String runReportJob(@RequestParam("job") String jobName) throws Exception {
         JobParameters jobParameters = new JobParametersBuilder()
                 .addLong("time", System.currentTimeMillis())
                 .toJobParameters();
